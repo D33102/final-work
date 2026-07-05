@@ -37,7 +37,7 @@ public class WalletController {
         return ResponseEntity.ok(wallet); 
     }
 
-    @GetMapping("/{userId}")
+    @GetMapping("/user/{userId}")
     public ResponseEntity<GetWalletByUserIdResponse> getWalletsByUserId(@PathVariable UUID userId) {
         List<Wallet> wallets = walletService.getWalletsByUserId(userId);
         GetWalletByUserIdResponse response = new GetWalletByUserIdResponse(wallets, "Wallets retrieved successfully.");
