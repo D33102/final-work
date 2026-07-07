@@ -25,6 +25,16 @@ public final class WalletProto {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_wallet_TransferResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_wallet_CreditRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_wallet_CreditRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_wallet_BalanceResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_wallet_BalanceResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -38,10 +48,14 @@ public final class WalletProto {
       "t\022\024\n\014from_account\030\001 \001(\t\022\022\n\nto_account\030\002 " +
       "\001(\t\022\016\n\006amount\030\003 \001(\003\022\020\n\010currency\030\004 \001(\t\"D\n" +
       "\020TransferResponse\022\026\n\016sender_balance\030\002 \001(" +
-      "\003\022\030\n\020receiver_balance\030\003 \001(\0032N\n\rWalletSer" +
-      "vice\022=\n\010Transfer\022\027.wallet.TransferReques" +
-      "t\032\030.wallet.TransferResponseB%\n\024com.proj." +
-      "grpc.walletB\013WalletProtoP\001b\006proto3"
+      "\003\022\030\n\020receiver_balance\030\003 \001(\003\"E\n\rCreditReq" +
+      "uest\022\022\n\naccount_no\030\001 \001(\t\022\016\n\006amount\030\002 \001(\003" +
+      "\022\020\n\010currency\030\003 \001(\t\"\"\n\017BalanceResponse\022\017\n" +
+      "\007balance\030\001 \001(\0032\210\001\n\rWalletService\022=\n\010Tran" +
+      "sfer\022\027.wallet.TransferRequest\032\030.wallet.T" +
+      "ransferResponse\0228\n\006Credit\022\025.wallet.Credi" +
+      "tRequest\032\027.wallet.BalanceResponseB%\n\024com" +
+      ".proj.grpc.walletB\013WalletProtoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -59,6 +73,18 @@ public final class WalletProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_wallet_TransferResponse_descriptor,
         new java.lang.String[] { "SenderBalance", "ReceiverBalance", });
+    internal_static_wallet_CreditRequest_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_wallet_CreditRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_wallet_CreditRequest_descriptor,
+        new java.lang.String[] { "AccountNo", "Amount", "Currency", });
+    internal_static_wallet_BalanceResponse_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_wallet_BalanceResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_wallet_BalanceResponse_descriptor,
+        new java.lang.String[] { "Balance", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

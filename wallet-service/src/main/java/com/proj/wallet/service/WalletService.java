@@ -111,6 +111,18 @@ public class WalletService {
         walletRepository.save(receiver);
     }
 
+    @Transactional
+    public void credit(String accountNo, BigDecimal amount) throws WalletNotFoundException {
+
+        Wallet wallet = walletRepository.findByAccountNoForUpdate(accountNo)
+                .orElseThrow(() -> new WalletNotFoundException("Wallet not found"));
+
+        wallet.setBalance(wallet.getBalance().add(amount));
+        wallet.setUpdatedAt(LocalDateTime.now());
+
+        walletRepository.save(wallet);
+    }
+
     public int getBalance(String account) {
         UUID walletId = walletRepository.findByAccountNoForUpdate(account).orElseThrow(() -> new WalletNotFoundException("Sender wallet not found")).getWalletId();
         BigDecimal balance = walletRepository.findById(walletId)

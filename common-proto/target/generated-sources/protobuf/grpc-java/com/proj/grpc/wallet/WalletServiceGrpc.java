@@ -46,6 +46,37 @@ public final class WalletServiceGrpc {
     return getTransferMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.proj.grpc.wallet.CreditRequest,
+      com.proj.grpc.wallet.BalanceResponse> getCreditMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "Credit",
+      requestType = com.proj.grpc.wallet.CreditRequest.class,
+      responseType = com.proj.grpc.wallet.BalanceResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.proj.grpc.wallet.CreditRequest,
+      com.proj.grpc.wallet.BalanceResponse> getCreditMethod() {
+    io.grpc.MethodDescriptor<com.proj.grpc.wallet.CreditRequest, com.proj.grpc.wallet.BalanceResponse> getCreditMethod;
+    if ((getCreditMethod = WalletServiceGrpc.getCreditMethod) == null) {
+      synchronized (WalletServiceGrpc.class) {
+        if ((getCreditMethod = WalletServiceGrpc.getCreditMethod) == null) {
+          WalletServiceGrpc.getCreditMethod = getCreditMethod =
+              io.grpc.MethodDescriptor.<com.proj.grpc.wallet.CreditRequest, com.proj.grpc.wallet.BalanceResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Credit"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.proj.grpc.wallet.CreditRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.proj.grpc.wallet.BalanceResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new WalletServiceMethodDescriptorSupplier("Credit"))
+              .build();
+        }
+      }
+    }
+    return getCreditMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -100,6 +131,13 @@ public final class WalletServiceGrpc {
         io.grpc.stub.StreamObserver<com.proj.grpc.wallet.TransferResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getTransferMethod(), responseObserver);
     }
+
+    /**
+     */
+    default void credit(com.proj.grpc.wallet.CreditRequest request,
+        io.grpc.stub.StreamObserver<com.proj.grpc.wallet.BalanceResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCreditMethod(), responseObserver);
+    }
   }
 
   /**
@@ -136,6 +174,14 @@ public final class WalletServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getTransferMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void credit(com.proj.grpc.wallet.CreditRequest request,
+        io.grpc.stub.StreamObserver<com.proj.grpc.wallet.BalanceResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getCreditMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -159,6 +205,13 @@ public final class WalletServiceGrpc {
     public com.proj.grpc.wallet.TransferResponse transfer(com.proj.grpc.wallet.TransferRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getTransferMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.proj.grpc.wallet.BalanceResponse credit(com.proj.grpc.wallet.CreditRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getCreditMethod(), getCallOptions(), request);
     }
   }
 
@@ -185,9 +238,18 @@ public final class WalletServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getTransferMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.proj.grpc.wallet.BalanceResponse> credit(
+        com.proj.grpc.wallet.CreditRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getCreditMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_TRANSFER = 0;
+  private static final int METHODID_CREDIT = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -209,6 +271,10 @@ public final class WalletServiceGrpc {
         case METHODID_TRANSFER:
           serviceImpl.transfer((com.proj.grpc.wallet.TransferRequest) request,
               (io.grpc.stub.StreamObserver<com.proj.grpc.wallet.TransferResponse>) responseObserver);
+          break;
+        case METHODID_CREDIT:
+          serviceImpl.credit((com.proj.grpc.wallet.CreditRequest) request,
+              (io.grpc.stub.StreamObserver<com.proj.grpc.wallet.BalanceResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -235,6 +301,13 @@ public final class WalletServiceGrpc {
               com.proj.grpc.wallet.TransferRequest,
               com.proj.grpc.wallet.TransferResponse>(
                 service, METHODID_TRANSFER)))
+        .addMethod(
+          getCreditMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.proj.grpc.wallet.CreditRequest,
+              com.proj.grpc.wallet.BalanceResponse>(
+                service, METHODID_CREDIT)))
         .build();
   }
 
@@ -284,6 +357,7 @@ public final class WalletServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new WalletServiceFileDescriptorSupplier())
               .addMethod(getTransferMethod())
+              .addMethod(getCreditMethod())
               .build();
         }
       }

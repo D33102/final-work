@@ -2,6 +2,8 @@ package com.proj.wallet.service;
 
 import java.math.BigDecimal;
 
+import com.proj.grpc.wallet.BalanceResponse;
+import com.proj.grpc.wallet.CreditRequest;
 import com.proj.grpc.wallet.TransferRequest;
 import com.proj.grpc.wallet.TransferResponse;
 import com.proj.grpc.wallet.WalletServiceGrpc;
@@ -42,4 +44,24 @@ public class WalletGrpcService extends WalletServiceGrpc.WalletServiceImplBase {
             responseObserver.onError(Status.FAILED_PRECONDITION.withDescription(e.getMessage()).asRuntimeException());
         }
     }
+
+    @Override
+    public void credit(CreditRequest request, StreamObserver<BalanceResponse> responseObserver) {
+
+        try {
+            BigDecimal amount = BigDecimal.valueOf(request.getAmount(), 2);
+
+            walletService.credit(request.getAccountNo(), amount);
+
+            BalanceResponse response = BalanceResponse.newBuilder()
+                    .setBalance(walletService.getBalance(request.getAccountNo()))
+                    .build();
+
+            responseObserver.onNext(response);
+            responseObserver.onCompleted();
+        } catch (WalletNotFoundException e) {
+            responseObserver.onError(Status.NOT_FOUND.withDescription(e.getMessage()).asRuntimeException());
+        }
+    }
+
 }
