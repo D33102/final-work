@@ -1,7 +1,0 @@
-spring:
-  application:
-      name: user-service
-
-grpc:
-  server:
-    port: 9090

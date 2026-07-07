@@ -17,9 +17,9 @@
         <module>auth-service</module>
         <module>user-service</module>
         <module>wallet-service</module>
-        <!-- <module>payment-service</module>
-        <module>ledger-service</module>
-        <module>fraud-service</module> -->
+        <module>payment-service</module>
+<!--        <module>ledger-service</module>-->
+<!--        <module>fraud-service</module> &ndash;&gt;-->
     </modules>
 
 </project>
