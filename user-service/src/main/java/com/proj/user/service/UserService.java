@@ -36,7 +36,20 @@ public class UserService {
                 .build();
 
         userRepository.save(user);
-        
+
+    }
+
+
+    public User registerProfile(String name, String email, String phoneNumber) {
+
+        User user = User.builder()
+                .name(name)
+                .email(email)
+                .phoneNumber(phoneNumber)
+                .status("PENDING")
+                .build();
+
+        return userRepository.save(user);
     }
 
 }

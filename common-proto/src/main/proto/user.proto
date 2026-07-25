@@ -8,11 +8,24 @@ option java_outer_classname = "UserProto";
 
 service UserService {
 
+  rpc CreateUser(CreateUserRequest)
+      returns (CreateUserResponse);
+
   rpc ExistsUser(ExistsUserRequest)
       returns (ExistsUserResponse);
 
   rpc GetUser(GetUserRequest)
       returns (UserResponse);
+}
+
+message CreateUserRequest {
+  string name = 1;
+  string email = 2;
+  string phone_number = 3;
+}
+
+message CreateUserResponse {
+  string user_id = 1;
 }
 
 message ExistsUserRequest {

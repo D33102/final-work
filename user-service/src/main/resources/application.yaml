@@ -23,3 +23,6 @@ server:
 grpc:
   server:
     port: 9090
+
+jwt:
+  secret: change-this-to-a-long-random-secret-value-at-least-32-bytes

@@ -15,6 +15,37 @@ public final class UserServiceGrpc {
   public static final java.lang.String SERVICE_NAME = "user.UserService";
 
   // Static method descriptors that strictly reflect the proto.
+  private static volatile io.grpc.MethodDescriptor<com.proj.grpc.user.CreateUserRequest,
+      com.proj.grpc.user.CreateUserResponse> getCreateUserMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "CreateUser",
+      requestType = com.proj.grpc.user.CreateUserRequest.class,
+      responseType = com.proj.grpc.user.CreateUserResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.proj.grpc.user.CreateUserRequest,
+      com.proj.grpc.user.CreateUserResponse> getCreateUserMethod() {
+    io.grpc.MethodDescriptor<com.proj.grpc.user.CreateUserRequest, com.proj.grpc.user.CreateUserResponse> getCreateUserMethod;
+    if ((getCreateUserMethod = UserServiceGrpc.getCreateUserMethod) == null) {
+      synchronized (UserServiceGrpc.class) {
+        if ((getCreateUserMethod = UserServiceGrpc.getCreateUserMethod) == null) {
+          UserServiceGrpc.getCreateUserMethod = getCreateUserMethod =
+              io.grpc.MethodDescriptor.<com.proj.grpc.user.CreateUserRequest, com.proj.grpc.user.CreateUserResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateUser"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.proj.grpc.user.CreateUserRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.proj.grpc.user.CreateUserResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("CreateUser"))
+              .build();
+        }
+      }
+    }
+    return getCreateUserMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<com.proj.grpc.user.ExistsUserRequest,
       com.proj.grpc.user.ExistsUserResponse> getExistsUserMethod;
 
@@ -127,6 +158,13 @@ public final class UserServiceGrpc {
 
     /**
      */
+    default void createUser(com.proj.grpc.user.CreateUserRequest request,
+        io.grpc.stub.StreamObserver<com.proj.grpc.user.CreateUserResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCreateUserMethod(), responseObserver);
+    }
+
+    /**
+     */
     default void existsUser(com.proj.grpc.user.ExistsUserRequest request,
         io.grpc.stub.StreamObserver<com.proj.grpc.user.ExistsUserResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getExistsUserMethod(), responseObserver);
@@ -169,6 +207,14 @@ public final class UserServiceGrpc {
 
     /**
      */
+    public void createUser(com.proj.grpc.user.CreateUserRequest request,
+        io.grpc.stub.StreamObserver<com.proj.grpc.user.CreateUserResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getCreateUserMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
     public void existsUser(com.proj.grpc.user.ExistsUserRequest request,
         io.grpc.stub.StreamObserver<com.proj.grpc.user.ExistsUserResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
@@ -198,6 +244,13 @@ public final class UserServiceGrpc {
     protected UserServiceBlockingStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new UserServiceBlockingStub(channel, callOptions);
+    }
+
+    /**
+     */
+    public com.proj.grpc.user.CreateUserResponse createUser(com.proj.grpc.user.CreateUserRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getCreateUserMethod(), getCallOptions(), request);
     }
 
     /**
@@ -233,6 +286,14 @@ public final class UserServiceGrpc {
 
     /**
      */
+    public com.google.common.util.concurrent.ListenableFuture<com.proj.grpc.user.CreateUserResponse> createUser(
+        com.proj.grpc.user.CreateUserRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getCreateUserMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
     public com.google.common.util.concurrent.ListenableFuture<com.proj.grpc.user.ExistsUserResponse> existsUser(
         com.proj.grpc.user.ExistsUserRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
@@ -248,8 +309,9 @@ public final class UserServiceGrpc {
     }
   }
 
-  private static final int METHODID_EXISTS_USER = 0;
-  private static final int METHODID_GET_USER = 1;
+  private static final int METHODID_CREATE_USER = 0;
+  private static final int METHODID_EXISTS_USER = 1;
+  private static final int METHODID_GET_USER = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -268,6 +330,10 @@ public final class UserServiceGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_CREATE_USER:
+          serviceImpl.createUser((com.proj.grpc.user.CreateUserRequest) request,
+              (io.grpc.stub.StreamObserver<com.proj.grpc.user.CreateUserResponse>) responseObserver);
+          break;
         case METHODID_EXISTS_USER:
           serviceImpl.existsUser((com.proj.grpc.user.ExistsUserRequest) request,
               (io.grpc.stub.StreamObserver<com.proj.grpc.user.ExistsUserResponse>) responseObserver);
@@ -294,6 +360,13 @@ public final class UserServiceGrpc {
 
   public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
     return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+        .addMethod(
+          getCreateUserMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.proj.grpc.user.CreateUserRequest,
+              com.proj.grpc.user.CreateUserResponse>(
+                service, METHODID_CREATE_USER)))
         .addMethod(
           getExistsUserMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -356,6 +429,7 @@ public final class UserServiceGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new UserServiceFileDescriptorSupplier())
+              .addMethod(getCreateUserMethod())
               .addMethod(getExistsUserMethod())
               .addMethod(getGetUserMethod())
               .build();

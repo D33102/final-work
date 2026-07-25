@@ -14,3 +14,6 @@ grpc:
     wallet-service:
       address: static://localhost:9091
       negotiationType: plaintext
+
+jwt:
+  secret: change-this-to-a-long-random-secret-value-at-least-32-bytes

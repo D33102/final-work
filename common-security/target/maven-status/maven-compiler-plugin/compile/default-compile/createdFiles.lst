@@ -1,0 +1,3 @@
+com/proj/security/JwtAuthenticationFilter.class
+com/proj/security/JwtTokenValidator.class
+com/proj/security/JwtSecurityAutoConfiguration.class

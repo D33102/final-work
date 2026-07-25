@@ -25,3 +25,6 @@ grpc:
 
   server:
     port: 9091
+
+jwt:
+  secret: change-this-to-a-long-random-secret-value-at-least-32-bytes

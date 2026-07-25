@@ -16,6 +16,16 @@ public final class UserProto {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_user_CreateUserRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_user_CreateUserRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_user_CreateUserResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_user_CreateUserResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_user_ExistsUserRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -44,41 +54,58 @@ public final class UserProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\nuser.proto\022\004user\"$\n\021ExistsUserRequest\022" +
-      "\017\n\007user_id\030\001 \001(\t\"$\n\022ExistsUserResponse\022\016" +
-      "\n\006exists\030\001 \001(\010\"!\n\016GetUserRequest\022\017\n\007user" +
-      "_id\030\001 \001(\t\"W\n\014UserResponse\022\017\n\007user_id\030\001 \001" +
-      "(\t\022\r\n\005email\030\002 \001(\t\022\021\n\tfull_name\030\003 \001(\t\022\024\n\014" +
-      "phone_number\030\004 \001(\t2\203\001\n\013UserService\022?\n\nEx" +
-      "istsUser\022\027.user.ExistsUserRequest\032\030.user" +
-      ".ExistsUserResponse\0223\n\007GetUser\022\024.user.Ge" +
-      "tUserRequest\032\022.user.UserResponseB!\n\022com." +
-      "proj.grpc.userB\tUserProtoP\001b\006proto3"
+      "\n\nuser.proto\022\004user\"F\n\021CreateUserRequest\022" +
+      "\014\n\004name\030\001 \001(\t\022\r\n\005email\030\002 \001(\t\022\024\n\014phone_nu" +
+      "mber\030\003 \001(\t\"%\n\022CreateUserResponse\022\017\n\007user" +
+      "_id\030\001 \001(\t\"$\n\021ExistsUserRequest\022\017\n\007user_i" +
+      "d\030\001 \001(\t\"$\n\022ExistsUserResponse\022\016\n\006exists\030" +
+      "\001 \001(\010\"!\n\016GetUserRequest\022\017\n\007user_id\030\001 \001(\t" +
+      "\"W\n\014UserResponse\022\017\n\007user_id\030\001 \001(\t\022\r\n\005ema" +
+      "il\030\002 \001(\t\022\021\n\tfull_name\030\003 \001(\t\022\024\n\014phone_num" +
+      "ber\030\004 \001(\t2\304\001\n\013UserService\022?\n\nCreateUser\022" +
+      "\027.user.CreateUserRequest\032\030.user.CreateUs" +
+      "erResponse\022?\n\nExistsUser\022\027.user.ExistsUs" +
+      "erRequest\032\030.user.ExistsUserResponse\0223\n\007G" +
+      "etUser\022\024.user.GetUserRequest\032\022.user.User" +
+      "ResponseB!\n\022com.proj.grpc.userB\tUserProt" +
+      "oP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_user_ExistsUserRequest_descriptor =
+    internal_static_user_CreateUserRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_user_CreateUserRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_user_CreateUserRequest_descriptor,
+        new java.lang.String[] { "Name", "Email", "PhoneNumber", });
+    internal_static_user_CreateUserResponse_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_user_CreateUserResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_user_CreateUserResponse_descriptor,
+        new java.lang.String[] { "UserId", });
+    internal_static_user_ExistsUserRequest_descriptor =
+      getDescriptor().getMessageTypes().get(2);
     internal_static_user_ExistsUserRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_user_ExistsUserRequest_descriptor,
         new java.lang.String[] { "UserId", });
     internal_static_user_ExistsUserResponse_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_user_ExistsUserResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_user_ExistsUserResponse_descriptor,
         new java.lang.String[] { "Exists", });
     internal_static_user_GetUserRequest_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_user_GetUserRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_user_GetUserRequest_descriptor,
         new java.lang.String[] { "UserId", });
     internal_static_user_UserResponse_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_user_UserResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_user_UserResponse_descriptor,

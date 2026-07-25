@@ -27,8 +27,9 @@ public class PaymentService {
                 .setAmount(request.getAmount())
                 .setCurrency(request.getCurrency())
                 .build());
+        
     }
-
+    
     @Transactional
     public TransferResponse transfer(TransferRequest request) {
         return walletService.transfer(TransferRequest.newBuilder()
