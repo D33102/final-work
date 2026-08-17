@@ -2,8 +2,17 @@ spring:
     application:
       name: payment-service
 
+    kafka:
+      bootstrap-servers: localhost:9092
+      producer:
+        key-serializer: org.apache.kafka.common.serialization.StringSerializer
+        value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
 server:
   port: 8082
+
+ledger:
+  topic: ledger.transactions
 
 grpc:
   client:
@@ -13,6 +22,10 @@ grpc:
 
     wallet-service:
       address: static://localhost:9091
+      negotiationType: plaintext
+
+    fraud-service:
+      address: static://localhost:9093
       negotiationType: plaintext
 
 jwt:

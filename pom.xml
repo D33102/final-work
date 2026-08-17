@@ -15,12 +15,13 @@
     <modules>
         <module>common-proto</module>
         <module>common-security</module>
+        <module>common-events</module>
         <module>auth-service</module>
         <module>user-service</module>
         <module>wallet-service</module>
         <module>payment-service</module>
-<!--        <module>ledger-service</module>-->
-<!--        <module>fraud-service</module> &ndash;&gt;-->
+        <module>ledger-service</module>
+        <module>fraud-service</module>
     </modules>
 
 </project>

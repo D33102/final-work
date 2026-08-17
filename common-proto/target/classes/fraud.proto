@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package fraud;
+
+option java_multiple_files = true;
+option java_package = "com.proj.grpc.fraud";
+option java_outer_classname = "FraudProto";
+
+service FraudService {
+
+  rpc CheckTransfer(CheckTransferRequest)
+      returns (CheckTransferResponse);
+}
+
+message CheckTransferRequest {
+  string from_account = 1;
+  string to_account = 2;
+  int64 amount = 3;
+  string currency = 4;
+}
+
+message CheckTransferResponse {
+  bool allowed = 1;
+  string reason = 2;
+}

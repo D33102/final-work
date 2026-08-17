@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="common-proto" />
         <module name="common-security" />
+        <module name="common-events" />
       </profile>
       <profile name="Annotation profile for banking-system" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -17,17 +18,22 @@
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
         </processorPath>
+        <module name="ledger" />
         <module name="payment" />
         <module name="wallet" />
         <module name="auth" />
         <module name="user" />
+        <module name="fraud" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="auth" options="-parameters" />
+      <module name="common-events" options="-parameters" />
       <module name="common-security" options="-parameters" />
+      <module name="fraud" options="-parameters" />
+      <module name="ledger" options="-parameters" />
       <module name="payment" options="-parameters" />
       <module name="user" options="-parameters" />
       <module name="wallet" options="-parameters" />

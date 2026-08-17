@@ -1,5 +1,11 @@
+/Users/dalai.js/Desktop/Code/final/common-proto/target/generated-sources/protobuf/grpc-java/com/proj/grpc/fraud/FraudServiceGrpc.java
 /Users/dalai.js/Desktop/Code/final/common-proto/target/generated-sources/protobuf/grpc-java/com/proj/grpc/user/UserServiceGrpc.java
 /Users/dalai.js/Desktop/Code/final/common-proto/target/generated-sources/protobuf/grpc-java/com/proj/grpc/wallet/WalletServiceGrpc.java
+/Users/dalai.js/Desktop/Code/final/common-proto/target/generated-sources/protobuf/java/com/proj/grpc/fraud/CheckTransferRequest.java
+/Users/dalai.js/Desktop/Code/final/common-proto/target/generated-sources/protobuf/java/com/proj/grpc/fraud/CheckTransferRequestOrBuilder.java
+/Users/dalai.js/Desktop/Code/final/common-proto/target/generated-sources/protobuf/java/com/proj/grpc/fraud/CheckTransferResponse.java
+/Users/dalai.js/Desktop/Code/final/common-proto/target/generated-sources/protobuf/java/com/proj/grpc/fraud/CheckTransferResponseOrBuilder.java
+/Users/dalai.js/Desktop/Code/final/common-proto/target/generated-sources/protobuf/java/com/proj/grpc/fraud/FraudProto.java
 /Users/dalai.js/Desktop/Code/final/common-proto/target/generated-sources/protobuf/java/com/proj/grpc/user/CreateUserRequest.java
 /Users/dalai.js/Desktop/Code/final/common-proto/target/generated-sources/protobuf/java/com/proj/grpc/user/CreateUserRequestOrBuilder.java
 /Users/dalai.js/Desktop/Code/final/common-proto/target/generated-sources/protobuf/java/com/proj/grpc/user/CreateUserResponse.java

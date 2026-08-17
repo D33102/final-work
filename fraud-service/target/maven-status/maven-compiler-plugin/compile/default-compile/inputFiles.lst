@@ -1,0 +1,6 @@
+/Users/dalai.js/Desktop/Code/final/fraud-service/src/main/java/com/proj/fraud/FraudApplication.java
+/Users/dalai.js/Desktop/Code/final/fraud-service/src/main/java/com/proj/fraud/config/FraudProperties.java
+/Users/dalai.js/Desktop/Code/final/fraud-service/src/main/java/com/proj/fraud/model/TransferRecord.java
+/Users/dalai.js/Desktop/Code/final/fraud-service/src/main/java/com/proj/fraud/repository/TransferRecordRepository.java
+/Users/dalai.js/Desktop/Code/final/fraud-service/src/main/java/com/proj/fraud/service/FraudGrpcService.java
+/Users/dalai.js/Desktop/Code/final/fraud-service/src/main/java/com/proj/fraud/service/FraudService.java

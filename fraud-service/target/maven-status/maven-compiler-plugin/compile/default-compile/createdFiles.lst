@@ -1,0 +1,9 @@
+com/proj/fraud/service/FraudService.class
+com/proj/fraud/config/FraudProperties$Velocity.class
+com/proj/fraud/model/TransferRecord.class
+com/proj/fraud/config/FraudProperties.class
+com/proj/fraud/model/TransferRecord$TransferRecordBuilder.class
+com/proj/fraud/service/FraudService$Decision.class
+com/proj/fraud/FraudApplication.class
+com/proj/fraud/repository/TransferRecordRepository.class
+com/proj/fraud/service/FraudGrpcService.class
