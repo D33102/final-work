@@ -18,7 +18,7 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
     consumer:
       group-id: ledger-service
       auto-offset-reset: earliest
@@ -35,4 +35,4 @@ ledger:
   topic: ledger.transactions
 
 jwt:
-  secret: change-this-to-a-long-random-secret-value-at-least-32-bytes
+  secret: ${JWT_SECRET:change-this-to-a-long-random-secret-value-at-least-32-bytes}

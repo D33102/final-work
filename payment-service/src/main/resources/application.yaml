@@ -3,7 +3,7 @@ spring:
       name: payment-service
 
     kafka:
-      bootstrap-servers: localhost:9092
+      bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
       producer:
         key-serializer: org.apache.kafka.common.serialization.StringSerializer
         value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
@@ -17,16 +17,16 @@ ledger:
 grpc:
   client:
     user-service:
-      address: static://localhost:9090
+      address: ${GRPC_USER_ADDRESS:static://localhost:9090}
       negotiationType: plaintext
 
     wallet-service:
-      address: static://localhost:9091
+      address: ${GRPC_WALLET_ADDRESS:static://localhost:9091}
       negotiationType: plaintext
 
     fraud-service:
-      address: static://localhost:9093
+      address: ${GRPC_FRAUD_ADDRESS:static://localhost:9093}
       negotiationType: plaintext
 
 jwt:
-  secret: change-this-to-a-long-random-secret-value-at-least-32-bytes
+  secret: ${JWT_SECRET:change-this-to-a-long-random-secret-value-at-least-32-bytes}

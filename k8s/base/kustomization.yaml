@@ -1,0 +1,47 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: banking
+
+resources:
+  - namespace.yaml
+  - postgres.yaml
+  - kafka.yaml
+  - auth.yaml
+  - user.yaml
+  - wallet.yaml
+  - payment.yaml
+  - ledger.yaml
+  - fraud.yaml
+  - ingress.yaml
+
+
+secretGenerator:
+  - name: banking-secrets
+    literals:
+      - JWT_SECRET=change-this-to-a-long-random-secret-value-at-least-32-bytes
+      - POSTGRES_PASSWORD=postgres
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+
+images:
+  - name: banking/auth
+    newName: LOCATION-docker.pkg.dev/YOUR_PROJECT/apps/auth
+    newTag: "1.0"
+  - name: banking/user
+    newName: LOCATION-docker.pkg.dev/YOUR_PROJECT/apps/user
+    newTag: "1.0"
+  - name: banking/wallet
+    newName: LOCATION-docker.pkg.dev/YOUR_PROJECT/apps/wallet
+    newTag: "1.0"
+  - name: banking/payment
+    newName: LOCATION-docker.pkg.dev/YOUR_PROJECT/apps/payment
+    newTag: "1.0"
+  - name: banking/ledger
+    newName: LOCATION-docker.pkg.dev/YOUR_PROJECT/apps/ledger
+    newTag: "1.0"
+  - name: banking/fraud
+    newName: LOCATION-docker.pkg.dev/YOUR_PROJECT/apps/fraud
+    newTag: "1.0"

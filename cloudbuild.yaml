@@ -1,0 +1,73 @@
+substitutions:
+  _LOCATION: us-central1    
+  _REPO: apps                
+  _CLUSTER: banking        
+  _TAG: latest         
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+timeout: 1800s
+
+steps:
+  - id: build-proto
+    name: maven:3.9-eclipse-temurin-17
+    entrypoint: mvn
+    args:
+      - -q
+      - -B
+      - -pl
+      - common-proto
+      - -DskipTests
+      - -Dmaven.repo.local=/workspace/.m2
+      - clean
+      - install
+
+  - id: build-rest
+    name: maven:3.9-eclipse-temurin-17
+    entrypoint: mvn
+    args:
+      - -q
+      - -B
+      - -pl
+      - '!common-proto'
+      - -DskipTests
+      - -Dmaven.repo.local=/workspace/.m2
+      - clean
+      - install
+
+  - id: images
+    name: maven:3.9-eclipse-temurin-17
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        set -e
+        declare -A MAIN=(
+          [auth]=com.proj.auth.AuthApplication
+          [user]=com.proj.user.UserApplication
+          [wallet]=com.proj.wallet.WalletApplication
+          [payment]=com.proj.payment.PaymentApplication
+          [ledger]=com.proj.ledger.LedgerApplication
+          [fraud]=com.proj.fraud.FraudApplication
+        )
+        for s in auth user wallet payment ledger fraud; do
+          echo ">> building image for $${s}-service"
+          mvn -q -B -pl $${s}-service -DskipTests \
+            -Dmaven.repo.local=/workspace/.m2 \
+            compile com.google.cloud.tools:jib-maven-plugin:3.4.4:build \
+            -Dimage=${_LOCATION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/$${s}:${_TAG} \
+            -Djib.container.mainClass=$${MAIN[$$s]}
+        done
+
+  - id: deploy
+    name: gcr.io/cloud-builders/kubectl
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        set -e
+        gcloud container clusters get-credentials ${_CLUSTER} --region ${_LOCATION}
+        kubectl kustomize k8s/overlays/dev \
+          | sed -E "s#LOCATION-docker.pkg.dev/YOUR_PROJECT/apps/([a-z]+):1.0#${_LOCATION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/\1:${_TAG}#g" \
+          | kubectl apply -f -

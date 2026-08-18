@@ -23,10 +23,10 @@ server:
 grpc:
   client:
     user-service:
-      address: static://localhost:9090
+      address: ${GRPC_USER_ADDRESS:static://localhost:9090}
       negotiationType: plaintext
 
 jwt:
-  secret: change-this-to-a-long-random-secret-value-at-least-32-bytes
+  secret: ${JWT_SECRET:change-this-to-a-long-random-secret-value-at-least-32-bytes}
   expiration: 3600000
   refresh-expiration: 604800000
