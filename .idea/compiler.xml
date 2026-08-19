@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="common-proto" />
+        <module name="api-gateway" />
         <module name="common-security" />
         <module name="common-events" />
       </profile>
@@ -29,6 +30,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="api-gateway" options="-parameters" />
       <module name="auth" options="-parameters" />
       <module name="common-events" options="-parameters" />
       <module name="common-security" options="-parameters" />

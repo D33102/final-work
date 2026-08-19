@@ -22,6 +22,7 @@
         <module>payment-service</module>
         <module>ledger-service</module>
         <module>fraud-service</module>
+        <module>api-gateway</module>
     </modules>
 
 </project>
